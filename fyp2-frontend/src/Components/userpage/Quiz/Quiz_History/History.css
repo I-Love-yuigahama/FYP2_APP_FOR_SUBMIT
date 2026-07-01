@@ -1,0 +1,67 @@
+/* Page background filling the screen below navbar */
+.history-page-container {
+  min-height: calc(100vh - 70px); /* Adjust based on your navbar height */
+  background: linear-gradient(180deg, #ffffff 0%, #e2daff 40%, #7651dd 100%);
+  padding: 60px 20px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* Wrapper to limit the width of the list */
+.history-content-wrapper {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Container for the cards to apply spacing */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Space between each history card */
+}
+
+/* The pill-shaped history cards */
+.history-card {
+  background-color: #ffffff;
+  border-radius: 50px; /* Creates the fully rounded "pill" shape */
+  padding: 25px 60px; /* Top/bottom and Left/right padding */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  
+  /* Flexbox to spread the 3 items evenly */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optional hover effect to make the cards feel interactive */
+.history-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Text styling for all elements inside the card */
+.history-card span {
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #111;
+}
+
+/* Specific alignment constraints just in case the window gets small */
+.history-room {
+  flex: 1;
+  text-align: left;
+}
+
+.history-datetime {
+  flex: 1;
+  text-align: center;
+}
+
+.history-role {
+  flex: 1;
+  text-align: right;
+}

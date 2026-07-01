@@ -1,0 +1,220 @@
+/* =========================================
+   LAYOUT & CONTAINER
+   ========================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 30px 5%;
+  background: transparent; 
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 100;
+  font-family: var(--font-sans);
+}
+
+/* =========================================
+   LOGO & BRANDING
+   ========================================= */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  font-weight: bold;
+}
+
+.brand-text h1 {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin: 0;
+  font-family: var(--font-cursive);
+}
+
+.brand-text span {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-top: -4px;
+}
+
+/* =========================================
+   CENTER NAVIGATION LINKS
+   ========================================= */
+.nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Forces perfect dead-center alignment */
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 40px; 
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-cursive);
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+  padding-bottom: 5px;
+}
+
+.nav-links a:hover {
+  color: var(--text-secondary);
+}
+
+.nav-links a.active {
+  border-bottom: 1.5px solid var(--text-primary);
+}
+
+/* =========================================
+   RIGHT ACTIONS (Auth, Dropdown, RoomCode)
+   ========================================= */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.room-code-link {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-cursive);
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.room-code-link:hover {
+  color: var(--text-secondary); 
+}
+
+.divider {
+  width: 1.5px;
+  height: 25px;
+  background-color: var(--divider-color);
+  margin: 0 5px; 
+}
+
+/* =========================================
+   BUTTONS (Glassmorphism & Solid)
+   ========================================= */
+.nav-btn {
+  font-family: var(--font-cursive);
+  font-size: 1.1rem;
+  padding: 8px 28px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: inline-block;
+  
+  /* Glassmorphism properties */
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur); 
+  box-shadow: var(--shadow-md), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.glass-pink {
+  background: var(--glass-pink-bg);
+  border: 1px solid var(--glass-pink-border);
+}
+
+.glass-green {
+  background: var(--glass-green-bg);
+  border: 1px solid var(--glass-green-border);
+}
+
+/* =========================================
+   LOGOUT BUTTON (Matches Login/Sign up)
+   ========================================= */
+.glass-logout {
+  background: rgba(255, 180, 190, 0.45); /* Soft red/pink glass */
+  border: 1px solid rgba(255, 180, 190, 0.6);
+  color: var(--text-primary);
+}
+
+.glass-logout:hover {
+  background: rgba(255, 180, 190, 0.65); /* Gets slightly darker on hover */
+}
+
+/* =========================================
+   USER DROPDOWN MENU
+   ========================================= */
+.user-dropdown-container {
+  position: relative; 
+  display: flex;
+  align-items: center;
+}
+
+.username-toggle {
+  font-family: var(--font-cursive);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: color 0.2s ease;
+}
+
+.username-toggle:hover {
+  color: var(--text-secondary);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px); /* Positions dynamically below the username */
+  right: 50%;
+  transform: translateX(50%);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  z-index: 101; /* Ensure it stays above everything */
+}
+
+.dropdown-item {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-cursive);
+  font-size: 0.95rem;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5; 
+}
+
+.dropdown-divider {
+  height: 1px;
+  background-color: #d0d0d0;
+  width: 100%;
+}

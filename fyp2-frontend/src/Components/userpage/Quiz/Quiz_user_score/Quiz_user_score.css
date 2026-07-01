@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+/* =========================================
+   MAIN CONTAINER & BACKGROUND
+   ========================================= */
+.results-container {
+  /* Background GIF completely bound here and locked on scroll */
+  background-image: url('../../Home/logged_in_bg.gif'); /* Ensure filename matches assets exactly */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 20px 60px; /* Top padding clears absolute navbar */
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Caveat', cursive;
+  width: 100%;
+}
+
+/* =========================================
+   RESULTS CARD (White Glassmorphism)
+   ========================================= */
+.congrats-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  
+  width: 100%;
+  max-width: 550px;
+  padding: 60px 40px;
+  border-radius: 40px; /* Highly rounded corners */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), inset 0 2px 5px rgba(255, 255, 255, 1);
+  text-align: center;
+  margin-bottom: 40px;
+  
+  /* Adds a slight float animation when the card loads */
+  animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+.congrats-title {
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  color: #111;
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.8);
+}
+
+.results-stats {
+  font-size: 2.2rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #333;
+  margin-top: 20px;
+}
+
+.loading-text {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* =========================================
+   HOME / BACK BUTTON (Matches other pages)
+   ========================================= */
+.home-btn {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #555;
+  padding: 12px 60px;
+  border-radius: 40px; /* Pill shape */
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 2px 5px rgba(255, 255, 255, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  color: #111;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), inset 0 2px 5px rgba(255, 255, 255, 1);
+}

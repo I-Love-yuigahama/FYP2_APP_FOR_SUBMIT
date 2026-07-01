@@ -1,0 +1,107 @@
+/* =========================================
+   PAGE CONTAINER & LAYOUT
+   ========================================= */
+.create-page-container {
+  min-height: 100vh;
+  /* Background image is handled inline in JSX, but we set the sizing here */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+}
+
+.create-content {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5vh; 
+  z-index: 10;
+}
+
+/* =========================================
+   TYPOGRAPHY (Matches Screenshot)
+   ========================================= */
+.create-title {
+  /* Use your cursive font variable here, fallback to Caveat */
+  font-family: var(--font-cursive, 'Caveat', cursive);
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #5a5a66; /* Matching the dark grey from your screenshot */
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  letter-spacing: 2px;
+}
+
+.title-dash {
+  color: #ffb4be; /* Soft pink for the dashes to match the blossoms */
+  font-weight: bold;
+}
+
+/* =========================================
+   FORM & iOS GLASS BUTTON
+   ========================================= */
+.create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.create-action-btn.glass-ios {
+  font-family: var(--font-cursive, 'Caveat', cursive);
+  font-size: 1.8rem;
+  color: #5a5a66; /* Matching the dark grey text in your screenshot */
+  cursor: pointer;
+  
+  /* Wide pill shape matching your layout */
+  padding: 12px 140px;
+  border-radius: 40px;
+  
+  /* 1. iOS Translucent Base */
+  background: rgba(255, 255, 255, 0.25);
+  
+  /* 2. Intense Frosted Blur + Color Vividness */
+  backdrop-filter: blur(25px) saturate(190%);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  
+  /* 3. Crisp Glass Perimeter Outline */
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  
+  /* 4. Multi-Layered iOS Depth Shadows (The Magic Sauce) */
+  box-shadow: 
+    0 10px 30px rgba(60, 60, 70, 0.12),            /* Soft dark ambient drop shadow */
+    0 1px 3px rgba(0, 0, 0, 0.05),                 /* Sharp baseline anchor shadow */
+    inset 0 2px 0px rgba(255, 255, 255, 0.65),     /* Top-edge specular highlight (glare) */
+    inset 0 -2px 4px rgba(0, 0, 0, 0.03),          /* Bottom-edge subtle shadow grounding */
+    inset 0 12px 24px rgba(255, 255, 255, 0.15);   /* Internal glossy core reflection */
+    
+  /* Smooth native-feeling transitions */
+  transition: 
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    background-color 0.3s ease;
+}
+
+/* iOS Active Touch States */
+.create-action-btn.glass-ios:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 15px 35px rgba(60, 60, 70, 0.18),
+    inset 0 2px 0px rgba(255, 255, 255, 0.8),
+    inset 0 12px 24px rgba(255, 255, 255, 0.25);
+}
+
+.create-action-btn.glass-ios:active {
+  transform: translateY(1px) scale(0.98); /* Slight squish effect when tapped */
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 5px 15px rgba(60, 60, 70, 0.1),
+    inset 0 1px 0px rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,153 @@
+/* Outer container gradient */
+.update-page-container {
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(180deg, #ffffff 0%, #e2daff 40%, #7651dd 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.update-content-wrapper {
+  width: 100%;
+  max-width: 800px; /* Controls how wide the inner purple card gets */
+}
+
+/* Inner purple gradient card */
+.update-card {
+  background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
+  border-radius: 40px;
+  padding: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Image Upload Styling --- */
+.image-upload-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin-bottom: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.image-upload-container:hover {
+  transform: scale(1.05); /* Slight pop effect on hover */
+}
+
+.editable-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark overlay that appears when hovering over the image */
+.image-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-upload-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay span {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* --- Form Styling --- */
+.update-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Space between rows */
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 100px 1fr; /* Label takes 100px, Input takes the rest */
+  gap: 30px;
+  align-items: center; /* Vertically aligns label with text area */
+}
+
+.form-row label {
+  font-size: 1rem;
+  font-style: italic;
+  color: #111;
+  font-weight: 500;
+  text-align: right; /* Pushes the label text toward the input */
+  line-height: 1.2;
+}
+
+/* Invisible Textareas to match the design */
+.form-row textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  resize: none; /* Prevents user from dragging to resize */
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #111;
+  text-align: center; /* Centers the text like in the image */
+  min-height: 50px;
+  padding: 5px;
+  outline: none;
+  /* Adds a subtle underline when the user clicks to type */
+  border-bottom: 1.5px solid transparent; 
+  transition: border-color 0.2s;
+}
+
+.form-row textarea:focus {
+  border-bottom: 1.5px solid #fff; 
+}
+
+/* Keyword input can be smaller */
+.keyword-input {
+  min-height: 30px !important; 
+}
+
+/* --- Update Button --- */
+.submit-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.update-btn {
+  background-color: #d1d9ff; /* Light periwinkle blue */
+  color: #111;
+  border: none;
+  padding: 10px 40px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.update-btn:hover {
+  transform: translateY(-2px);
+  background-color: #b5c0ff;
+}

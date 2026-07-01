@@ -1,0 +1,158 @@
+/* Outer container gradient */
+.create-user-container {
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(180deg, #ffffff 0%, #e2daff 40%, #7651dd 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.create-user-wrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Inner purple gradient card */
+.create-user-card {
+  background: linear-gradient(180deg, #a78bfa 0%, #7c3aed 100%);
+  border-radius: 40px;
+  padding: 100px 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Form Styling --- */
+.create-user-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px; 
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 120px 1fr; 
+  gap: 30px;
+  align-items: center;
+}
+
+.form-row label {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #111;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* --- Inputs --- */
+.form-row input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #111;
+  text-align: center;
+  padding: 10px;
+  outline: none;
+  border-bottom: 1.5px solid transparent; 
+  transition: border-color 0.2s;
+}
+
+.form-row input::placeholder {
+  color: #222;
+  opacity: 1;
+}
+
+.form-row input:focus {
+  border-bottom: 1.5px solid #fff; 
+}
+
+/* --- Password Specific Styling --- */
+.password-input-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Make sure the text doesn't type *under* the icon */
+.password-input-container input {
+  padding-right: 40px; 
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.eye-icon:hover {
+  opacity: 0.7;
+}
+
+/* --- Create Button --- */
+.submit-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.action-btn {
+  background-color: #d1d9ff; 
+  color: #111;
+  border: none;
+  padding: 12px 45px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  background-color: #b5c0ff;
+}
+
+.form-row select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid transparent;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #111;
+  text-align: center;
+  padding: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-row select:focus {
+  border-bottom: 1.5px solid #fff;
+}
+
+.form-row select option {
+  background-color: #7c3aed;
+  color: #fff;
+}

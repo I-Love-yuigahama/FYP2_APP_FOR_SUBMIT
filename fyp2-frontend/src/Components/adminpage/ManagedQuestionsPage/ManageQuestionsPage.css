@@ -1,0 +1,123 @@
+/* Page background filling the screen below navbar */
+.question-page-container {
+  min-height: calc(100vh - 70px); /* Adjust based on navbar height */
+  background: linear-gradient(180deg, #ffffff 0%, #e2daff 40%, #7651dd 100%);
+  padding: 40px; /* Space around the white card */
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* Wrapper for the white card */
+.question-content-wrapper {
+  max-width: 1400px; /* Keeps the table from getting too wide on huge screens */
+  margin: 0 auto;
+}
+
+/* The large white container */
+.data-card {
+  background-color: #ffffff;
+  border-radius: 40px; /* Matches the large rounded corners in your design */
+  padding: 40px 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* --- GRID LAYOUT FOR THE TABLE --- */
+/* This aligns the headers and rows perfectly */
+.table-header, .table-row {
+  display: grid;
+  /* Columns: Image | Text | Answer | Keyword | Buttons */
+  grid-template-columns: 100px 1.5fr 2fr 1.5fr 300px; 
+  gap: 30px;
+  align-items: center; /* Vertically centers everything in the row */
+  text-align: center; /* Centers the text as seen in your image */
+}
+
+/* --- HEADERS --- */
+.table-header {
+  margin-bottom: 30px;
+}
+
+.header-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.underline-title {
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #111;
+  border-bottom: 1.5px solid #333; /* The black line under the title */
+  padding-bottom: 5px;
+  display: inline-block;
+  min-width: 80px; /* Gives the underline a consistent width */
+}
+
+/* --- ROW CONTENT --- */
+.table-row {
+  margin-bottom: 40px; /* Space between each row */
+}
+
+/* Row text styling */
+.col-text p, .col-answer p, .col-keyword p {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #333;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Image styling */
+.col-img {
+  display: flex;
+  justify-content: center;
+}
+
+.col-img img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; /* Makes the image a perfect circle */
+  object-fit: cover; /* Prevents image distortion */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid #f0f0f0;
+}
+
+/* --- ACTION BUTTONS --- */
+.col-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Space between buttons */
+}
+
+.col-actions button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px; /* Pill shape */
+  color: white;
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  min-width: 75px;
+}
+
+.col-actions button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* Specific Button Colors */
+.btn-view {
+  background-color: #009e4f; /* Green */
+}
+
+.btn-edit {
+  background-color: #5b3cf5; /* Purple/Blue */
+  text-transform: uppercase;
+}
+
+.btn-delete {
+  background-color: #d10000; /* Red */
+  text-transform: uppercase;
+}

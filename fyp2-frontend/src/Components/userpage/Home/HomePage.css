@@ -1,0 +1,561 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+/* =========================================
+   GLOBAL SMOOTHING
+   ========================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================
+   THEME VARIABLES
+   ========================================= */
+:root {
+  --font-cursive: 'Caveat', cursive;
+  --font-mono: 'Anonymous Pro', monospace;
+  --font-sans: sans-serif;
+  
+  --bg-white: #ffffff;
+  --bg-pink: #ffe6eb;
+  --bg-offwhite: #fdfcfb;
+  
+  --text-dark: #111111;
+  --text-grey: #555555;
+  
+  --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   BASE STYLES & TYPOGRAPHY FIX
+   ========================================= */
+.homepage-container {
+  color: var(--text-dark);
+  overflow-x: clip; 
+  background-color: var(--bg-white);
+  font-family: var(--font-mono, 'Anonymous Pro', monospace); 
+}
+
+.section,
+.card,
+.card-title,
+.card-desc,
+.title,
+.section-subtitle,
+.feature-card,
+.card-step,
+.cta-join,
+.large-title {
+  font-family: var(--font-mono, 'Anonymous Pro', monospace) !important;
+}
+
+.section {
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.section-white { background-color: var(--bg-white); }
+.section-pink { background-color: var(--bg-pink); }
+
+.cursive-text {
+  font-family: var(--font-cursive, 'Caveat', cursive) !important;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.large-title {
+  font-size: 4.5rem;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-grey);
+  margin-bottom: 60px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   HERO SECTION & LOAD ANIMATIONS
+   ========================================= */
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(4px); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.hero-section {
+  background-color: var(--bg-offwhite);
+  background-position: center 99%;      
+  background-repeat: no-repeat;          
+  background-size: cover; 
+  width: 100%;
+  min-height: 100vh; 
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;     
+  border-bottom: 2px solid #eaeaea; 
+  padding-top: 80px; 
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+.hero-content-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.typewriter-text {
+  font-style: italic;
+  font-size: 80px;
+  letter-spacing: normal; 
+  word-spacing: 10px;     
+  font-weight: 500;
+  color: var(--text-dark);
+  margin: 0 0 15px 0; 
+  padding: 0;
+  width: auto; 
+  text-align: center;
+  animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-section .subtitle {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-grey);
+  margin: 0; 
+  padding: 0;
+  width: auto;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-right: -2px; 
+  text-indent: 0; 
+  opacity: 0;
+  animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+/* =========================================
+   GRID LAYOUTS
+   ========================================= */
+.cards-container {
+  display: grid;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* =========================================
+   CARDS BASE
+   ========================================= */
+.card {
+  border-radius: 35px;
+  padding: 35px 25px; 
+  width: 100%; 
+  max-width: 320px; 
+  box-sizing: border-box;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  box-shadow: 12px 15px 30px rgba(0, 0, 0, 0.18);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.card-white { 
+  background: rgba(255, 255, 255, 0.98); 
+  border: none;
+}
+
+/* =========================================
+   SECTION 2: 3D CSS VARIABLE CARDS
+   ========================================= */
+.question-card-3d {
+  --rx: 0deg;
+  --ry: 0deg;
+  --ty: 0px;
+  --scale: 1;
+  --shadow-alpha: 0.18;
+  --trans: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+
+  border-radius: 25px;       
+  transform-style: preserve-3d; 
+  background: rgba(255, 255, 255, 0.98);
+  
+  transform: perspective(1000px) translateY(var(--ty)) scale3d(var(--scale), var(--scale), var(--scale)) rotateX(var(--rx)) rotateY(var(--ry));
+  box-shadow: 12px 15px 30px rgba(0, 0, 0, var(--shadow-alpha));
+  transition: var(--trans);
+}
+
+.card-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  width: 100%;
+  font-weight: 600;
+  transform: translateZ(20px); 
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  letter-spacing: 1.5px;
+  color: var(--text-grey);
+  margin-bottom: 25px;
+  flex-grow: 1;
+  transform: translateZ(10px); 
+}
+
+/* Interactive Glass Icons */
+.card-icon-box {
+  width: 75px;
+  height: 75px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  
+  transform: translateZ(30px); 
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, box-shadow 0.4s ease;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  cursor: pointer; 
+}
+
+.card-icon-box:hover {
+  transform: translateZ(45px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12), inset 0 2px 3px rgba(255, 255, 255, 0.9);
+}
+
+.pink-box { background: rgba(255, 204, 217, 0.45); } 
+.pink-box:hover { background: rgba(255, 204, 217, 0.65); }
+.green-box { background: rgba(220, 245, 204, 0.45); } 
+.green-box:hover { background: rgba(220, 245, 204, 0.65); }
+
+/* Interactive Glass Badges */
+.card-badge {
+  padding: 10px 16px;
+  border-radius: 30px; 
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); 
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  
+  transform: translateZ(15px); 
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.card-badge:hover {
+  transform: translateZ(25px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12), inset 0 2px 2px rgba(255, 255, 255, 0.9);
+}
+
+.pink-badge { background: rgba(248, 201, 208, 0.85); color: #df3649; }
+.pink-badge:hover { background: rgba(248, 201, 208, 0.95); }
+
+.green-badge { background: rgba(238, 247, 181, 0.85); color: #7b8e19; }
+.green-badge:hover { background: rgba(238, 247, 181, 0.95); }
+
+/* =========================================
+   SECTION 3: STEP QUIZ CARDS
+   ========================================= */
+.card-step {
+  position: relative;
+  align-items: center;
+  padding-top: 60px;
+  border-radius: 35px;
+  
+  background: rgba(255, 230, 235, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.6); 
+  box-shadow: 
+    10px 15px 35px rgba(0, 0, 0, 0.1),       
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);  
+}
+
+.step-number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 35px;
+  height: 35px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic; 
+  color: var(--text-dark);
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.card-step .card-icon-large { margin-top: 0; margin-bottom: 20px; display: flex; justify-content: center; }
+.card-step .card-title { font-size: 1.6rem; margin-bottom: 20px; }
+.card-step .card-desc { font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; color: var(--text-dark); }
+
+/* =========================================
+   SECTION 3: CSS ICONS WITH DROP SHADOWS
+   ========================================= */
+.icon-user { width: 45px; height: 45px; background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0px 6px 4px rgba(0,0,0,0.3)); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23111'%3E%3Cpath d='M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z'/%3E%3C/svg%3E"); }
+.icon-file { width: 45px; height: 45px; background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0px 6px 4px rgba(0,0,0,0.3)); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23111'%3E%3Cpath d='M13 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9l-7-7zm4 14h-3v3h-2v-3H9v-2h3v-3h2v3h3v2z'/%3E%3C/svg%3E"); }
+.icon-brain { width: 45px; height: 45px; background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0px 6px 4px rgba(0,0,0,0.3)); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 2A2.5 2.5 0 0 0 7 4.5v.5a2.5 2.5 0 0 0-2.5 2.5v.5A2.5 2.5 0 0 0 2 10.5v1A2.5 2.5 0 0 0 4.5 14H5v1.5A2.5 2.5 0 0 0 7.5 18h1a2.5 2.5 0 0 0 2.5-2.5V15h2v.5A2.5 2.5 0 0 0 15.5 18h1A2.5 2.5 0 0 0 19 15.5V14h.5A2.5 2.5 0 0 0 22 11.5v-1A2.5 2.5 0 0 0 19.5 8v-.5A2.5 2.5 0 0 0 17 5v-.5A2.5 2.5 0 0 0 14.5 2h-5z'/%3E%3Cpath d='M12 2v20'/%3E%3C/svg%3E"); }
+.icon-wreath { width: 45px; height: 45px; background-repeat: no-repeat; background-position: center; background-size: contain; filter: drop-shadow(0px 6px 4px rgba(0,0,0,0.3)); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 21h8'/%3E%3Cpath d='M12 17v4'/%3E%3Cpath d='M7 4h10'/%3E%3Cpath d='M17 4v8a5 5 0 0 1-10 0V4'/%3E%3Cpath d='M4 4h3v8H4z'/%3E%3Cpath d='M17 4h3v8h-3z'/%3E%3C/svg%3E"); }
+
+.center-text { text-align: center; }
+.section-footer-text { margin-top: 50px; font-size: 1.1rem; color: var(--text-grey); line-height: 1.6; }
+
+/* =========================================
+   SECTION 4: FEATURE CARDS
+   ========================================= */
+.feature-card {
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 
+    10px 15px 30px rgba(171, 123, 129, 0.12), 
+    inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s ease, 
+              background 0.4s ease !important;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.65) !important; 
+  box-shadow: 
+    15px 25px 45px rgba(171, 123, 129, 0.22), 
+    inset 0 1px 2px rgba(255, 255, 255, 1) !important;
+}
+
+.feature-card .card-icon-box {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 25px;
+}
+
+.feature-card svg { filter: drop-shadow(0 2px 4px rgba(171, 123, 129, 0.2)); }
+.feature-card .card-title { color: var(--text-dark); font-size: 1.7rem; margin-bottom: 12px; }
+.feature-card .card-desc { color: #444; font-weight: 500; line-height: 1.5; letter-spacing: 0.5px; }
+
+.feature-card:has(.green-box) {
+  box-shadow: 10px 15px 30px rgba(163, 179, 66, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* =========================================
+   SECTION 5: PRE-LOGIN CTA
+   ========================================= */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.cta-content { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 80px; 
+  margin-top: 60px; 
+  width: 100%; 
+  max-width: 1100px; 
+}
+
+.cta-image { 
+  width: 250px; 
+  height: auto; 
+  border-radius: 0; 
+  box-shadow: 12px 25px 40px rgba(0, 0, 0, 0.12); 
+  animation: float 6s ease-in-out infinite; 
+}
+
+.cta-actions-box { display: flex; flex-direction: column; align-items: center; }
+.cta-join { font-size: 2.2rem; margin-bottom: 40px; font-weight: 700; }
+.cta-buttons { display: flex; gap: 30px; }
+
+/* Base styling for CTA Buttons */
+.cta-btn {
+  font-family: var(--font-cursive, 'Caveat', cursive) !important;
+  font-style: italic;
+  font-size: 1.6rem;         
+  padding: 12px 20px; /* Reduced padding since we are setting a minimum width */
+  min-width: 150px;   /* Forces all buttons to be the exact same width */
+  text-align: center; /* Ensures the text stays perfectly centered */
+  border-radius: 40px;       
+  cursor: pointer;
+  color: var(--text-dark);
+  text-decoration: none;
+  display: inline-block;
+  
+  backdrop-filter: var(--glass-blur, blur(12px));
+  -webkit-backdrop-filter: var(--glass-blur, blur(12px)); 
+  
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08)), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.glass-btn-pink { background: rgba(255, 204, 217, 0.45); border: 1px solid rgba(255, 204, 217, 0.6); }
+.glass-btn-green { background: rgba(220, 245, 204, 0.45); border: 1px solid rgba(220, 245, 204, 0.6); }
+
+
+/* =========================================
+   SECTION 5: POST-LOGIN CTA (NEW)
+   ========================================= */
+.cta-section-logged-in {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.logged-in-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px; 
+  z-index: 2;
+}
+
+.logged-in-title {
+  font-family: var(--font-mono, 'Anonymous Pro', monospace) !important;
+  font-style: italic;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   POST-LOGIN CTA (改良版毛玻璃色彩)
+   ========================================= */
+
+/* Create 按钮：提取背景太阳与樱花的珊瑚粉色 */
+.glass-btn-create { 
+  background: rgba(240, 168, 176, 0.45); /* 半透明的柔和粉色 */
+  border: 1px solid rgba(255, 255, 255, 0.7); /* 较亮的白色边框勾勒边缘 */
+  color: #4a2328; /* 单独加深一点这个按钮的字体颜色，增加对比度 */
+}
+
+.glass-btn-create:hover { 
+  background: rgba(240, 168, 176, 0.75); /* 鼠标悬浮时颜色变实 */
+  /* 加入同色系的专属发光阴影，让它更跳脱 */
+  box-shadow: 0 12px 25px rgba(240, 168, 176, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+
+/* Join 按钮：提取背景城市与桥梁的雾霾蓝色 */
+.glass-btn-join { 
+  background: rgba(162, 186, 206, 0.45); /* 半透明的灰蓝色 */
+  border: 1px solid rgba(255, 255, 255, 0.7); 
+  color: #1e2e3d; /* 加深蓝色字体以配合背景 */
+}
+
+.glass-btn-join:hover { 
+  background: rgba(162, 186, 206, 0.75); 
+  /* 加入同色系的专属发光阴影 */
+  box-shadow: 0 12px 25px rgba(162, 186, 206, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer-section { background-color: var(--bg-pink); padding: 60px 20px 40px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 10; }
+.contact-text { font-size: 1.6rem; margin-bottom: 20px; }
+.footer-links { display: flex; gap: 150px; margin: 30px 0 50px 0; font-size: 1.4rem; }
+.footer-link { cursor: pointer; transition: color 0.3s ease; }
+.footer-link:hover { text-decoration: underline; color: #000; }
+.copyright-text { font-size: 1.1rem; color: var(--text-grey); font-family: var(--font-mono); }
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 1000px) {
+  .cards-container { grid-template-columns: 1fr; max-width: 500px; }
+  .cta-content { flex-direction: column; gap: 40px; }
+  .cta-image { display: none; }
+  .footer-links { gap: 40px; flex-direction: column; }
+  .title, .large-title { font-size: 3rem; }
+  .typewriter-text { font-size: 28px; }
+  .logged-in-title { font-size: 2.2rem; }
+}
+
+/* =========================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================= */
+.animate-on-scroll { 
+  opacity: 0; 
+  transform: translateY(50px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); 
+  will-change: opacity, transform; 
+}
+
+.animate-on-scroll.is-visible { 
+  opacity: 1; 
+  transform: translateY(0) scale(1); 
+}
+
+.card:not(.question-card-3d).animate-on-scroll.is-visible:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 15px 20px 40px rgba(0, 0, 0, 0.22);
+}
+
+.delay-1 { transition-delay: 0.05s; }
+.delay-2 { transition-delay: 0.1s; }
+.delay-3 { transition-delay: 0.15s; }
+.delay-4 { transition-delay: 0.2s; }
+.delay-5 { transition-delay: 0.25s; }
+.delay-6 { transition-delay: 0.3s; }

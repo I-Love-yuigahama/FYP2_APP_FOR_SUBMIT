@@ -1,0 +1,27 @@
+/* =========================================
+   1. GLOBAL RESET & THEME (The "SScience" Look)
+   ========================================= */
+/* :root {
+  --primary-purple: #6c5ce7;
+  --soft-purple: #a29bfe;
+  --bg-gradient: linear-gradient(180deg, #ffffff 0%, #b39dfa 100%);
+  --glass-white: rgba(255, 255, 255, 0.9);
+  --text-dark: #2d3436;
+  --text-light: #636e72;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --border-radius: 20px;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--text-dark);
+  line-height: 1.6;
+} */

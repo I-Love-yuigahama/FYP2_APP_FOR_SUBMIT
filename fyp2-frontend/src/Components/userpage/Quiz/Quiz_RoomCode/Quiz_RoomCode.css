@@ -1,0 +1,151 @@
+/* =========================================
+   WRAPPER & BACKGROUND (GIF)
+   ========================================= */
+/* Quiz_RoomCode.css */
+.room-code-page {          /* unique name */
+  min-height: 100vh;
+  background-image: url('../../Home/logged_in_bg.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.enter-code-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  z-index: 10;
+}
+
+.enter-code-screen form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+.enter-code-title {
+  font-family: var(--font-cursive, 'Caveat', cursive);
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #5a5a66;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  font-style: normal;
+}
+
+.enter-code-instruction {
+  font-family: var(--font-cursive, 'Caveat', cursive);
+  font-size: 1.2rem;
+  color: #5a5a66;
+  margin-bottom: 40px;
+  text-align: center;
+  font-style: normal;
+}
+
+.enter-code-error {
+  font-family: var(--font-cursive, 'Caveat', cursive);
+  font-size: 1.2rem;
+  color: #d10000;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* =========================================
+   THE MINIMALIST LINE INPUT FIELD
+   ========================================= */
+.code-input-field {
+  background: transparent;
+  border: none;
+  /* Replaces the giant grey box with a bottom anchor line */
+  border-bottom: 2.5px solid rgba(90, 90, 102, 0.4); 
+  border-radius: 0; 
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  padding: 8px 10px;
+  font-size: 2.5rem;
+  font-family: var(--font-cursive, 'Caveat', cursive);
+  font-style: normal;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  margin-bottom: 60px;
+  color: #5a5a66;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.code-input-field::placeholder {
+  color: rgba(90, 90, 102, 0.25);
+}
+
+/* Subtle accent transformation when active */
+.code-input-field:focus {
+  background: transparent;
+  border-bottom: 2.5px solid #ffb4be; 
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   iOS GLASS BUTTON (65% Base Opacity)
+   ========================================= */
+.join-btn {
+  font-family: var(--font-cursive, 'Caveat', cursive);
+  font-size: 1.8rem;
+  font-style: normal;
+  color: #5a5a66; 
+  cursor: pointer;
+  
+  /* Dimensions matching the screenshot button sizing */
+  padding: 12px 140px;
+  border-radius: 40px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  
+  /* 65% glass transparency default state */
+  background: rgba(255, 255, 255, 0.65);
+  
+  /* High-fidelity iOS backdrop effects */
+  backdrop-filter: blur(25px) saturate(190%);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  
+  /* Specular depth lightning */
+  box-shadow: 
+    0 10px 30px rgba(60, 60, 70, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    inset 0 2px 0px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.02),
+    inset 0 12px 24px rgba(255, 255, 255, 0.15);
+    
+  transition: 
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+    background-color 0.3s ease;
+}
+
+.join-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.8); 
+  box-shadow: 
+    0 15px 35px rgba(60, 60, 70, 0.18),
+    inset 0 2px 0px rgba(255, 255, 255, 0.9),
+    inset 0 12px 24px rgba(255, 255, 255, 0.25);
+}
+
+.join-btn:active {
+  transform: translateY(1px) scale(0.98);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 5px 15px rgba(60, 60, 70, 0.1),
+    inset 0 1px 0px rgba(255, 255, 255, 0.4);
+}

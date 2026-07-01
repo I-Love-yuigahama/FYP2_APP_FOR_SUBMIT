@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+/* =========================================
+   MAIN CONTAINER & BACKGROUND
+   ========================================= */
+.leaderboard-screen {
+  /* Background GIF locked in place */
+  background-image: url('../../Home/logged_in_bg.gif'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Top padding ensures it clears the navbar, bottom padding leaves room for buttons */
+  padding: 120px 20px 80px; 
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Caveat', cursive;
+  width: 100%;
+}
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+.leaderboard-title {
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+}
+
+/* =========================================
+   ANIMATED LIST CONTAINER
+   ========================================= */
+.leaderboard-list {
+  position: relative; /* Required for the absolute positioning of children */
+  width: 100%;
+  max-width: 600px;
+  
+  /* MAGIC CENTERING: 
+     If the list is short, this centers it vertically in the flex column. 
+     If it gets too tall, it pushes naturally into the padding area so you can scroll! */
+  margin: auto 0; 
+  
+  transition: height 0.5s ease; /* Smoothly expands if a new user joins late */
+}
+
+/* =========================================
+   GLASS PILL ROWS (Smooth Gliding Animation)
+   ========================================= */
+.user-score-row {
+  position: absolute; 
+  left: 0;
+  right: 0;
+  top: 0; /* ✅ Lock top to 0, let translateY do the moving */
+  height: 65px; 
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  
+  /* White Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1), inset 0 2px 5px rgba(255, 255, 255, 1);
+  
+  color: #333;
+  
+  /* ✅ THIS IS THE ANIMATION MAGIC: 
+     Animate 'transform' instead of 'top'. This forces the browser's GPU 
+     to handle the animation, resulting in a perfect, smooth glide. */
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.user-score-row:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 2px 5px rgba(255, 255, 255, 1);
+  z-index: 10; 
+  /* Removed scale transform on hover so it doesn't fight with the sliding transform */
+}
+
+.player-name {
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #555;
+}
+
+.player-score {
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #111;
+}
+
+/* =========================================
+   BUTTON ACTIONS
+   ========================================= */
+.leaderboard-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Reused Glassmorphism style for the buttons */
+.home-btn {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 10px 40px;
+  border-radius: 30px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 2px 2px rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 2px 2px rgba(255, 255, 255, 1);
+}

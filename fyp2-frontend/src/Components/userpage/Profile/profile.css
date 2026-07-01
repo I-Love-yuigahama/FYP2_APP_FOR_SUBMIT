@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* =========================================
+   PAGE LAYOUT
+   ========================================= */
+.profile-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fdf0f2; /* Matches your auth background */
+  padding: 40px 20px;
+  font-family: 'Anonymous Pro', monospace;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   GLASS CARD CONTAINER (Matches your auth style)
+   ========================================= */
+.profile-glass-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 50px 40px;
+  
+  /* White Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 40px; /* Highly rounded corners */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), inset 0 2px 5px rgba(255, 255, 255, 1);
+  
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   HEADER & ALERTS
+   ========================================= */
+.profile-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.profile-title {
+  margin: 0 0 10px 0;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 2px;
+}
+
+.profile-subtitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #555;
+}
+
+.profile-error-alert {
+  color: #df3649;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-success-alert {
+  color: #2e7d32;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* =========================================
+   DETAILS VIEW (Read-Only Mode)
+   ========================================= */
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.detail-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-label {
+  font-weight: 700;
+  color: #777;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-value {
+  font-weight: 700;
+  color: #111;
+  font-size: 1.2rem;
+}
+
+/* =========================================
+   EDIT FORM: INPUT FIELDS (Matches Auth)
+   ========================================= */
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.profile-password-inner-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.profile-input-field {
+  width: 100%;
+  height: 58px;
+  background-color: #ffffff;
+  border: 1px solid #c7c7c7;
+  border-radius: 22px;
+  padding: 10px 50px 10px 24px; 
+  font-size: 1.1rem;
+  font-family: 'Anonymous Pro', monospace;
+  color: #222;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+.profile-input-field:focus {
+  border-color: #9f9f9f;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Dynamic Floating Labels */
+.profile-label {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  padding: 0 8px;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #111;
+  z-index: 10;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.profile-input-field:focus ~ .profile-label,
+.profile-input-group.has-value .profile-label {
+  top: -28px;
+  transform: translateY(0);
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Eye Icon */
+.profile-eye-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #777;
+  user-select: none;
+  z-index: 11;
+  transition: opacity 0.2s ease;
+}
+
+.profile-eye-icon:hover {
+  opacity: 0.7;
+}
+
+/* =========================================
+   BUTTONS (Sakura Glassmorphism)
+   ========================================= */
+.profile-btn-group {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.profile-submit-btn, .profile-cancel-btn {
+  flex: 1;
+  color: #2c2c2c;
+  border-radius: 40px;
+  padding: 14px 0;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 700;
+  font-family: 'Anonymous Pro', monospace;
+  cursor: pointer;
+  
+  /* Sakura Glass Background */
+  background: rgba(243, 192, 199, 0.45); 
+  border: 1.5px solid rgba(255, 255, 255, 0.7); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 6px 20px rgba(243, 192, 199, 0.2), inset 0 1.5px 2px rgba(255, 255, 255, 0.8);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.profile-submit-btn:hover, .profile-cancel-btn:hover {
+  transform: translateY(-3px);
+  color: #111; 
+  background: rgba(243, 192, 199, 0.75); 
+  box-shadow: 0 10px 25px rgba(243, 192, 199, 0.45), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+}
+
+/* Distinct styling for Cancel button to separate it visually */
+.profile-cancel-btn {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05), inset 0 1.5px 2px rgba(255, 255, 255, 0.8);
+}
+
+.profile-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+}
+
+/* Distinct styling for Logout button */
+.logout-btn {
+  background: rgba(223, 54, 73, 0.15); /* Soft red tint */
+  color: #df3649;
+}
+
+.logout-btn:hover {
+  background: rgba(223, 54, 73, 0.3);
+  color: #a01726;
+  box-shadow: 0 10px 25px rgba(223, 54, 73, 0.2), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+}
