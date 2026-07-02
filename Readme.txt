@@ -11,9 +11,9 @@ and ONNX models, secure JWT authentication, and an admin dashboard.
  SOURCE CODE
 ===============================================================================
 
-Online Repository / Drive Link:
-  [TODO: INSERT YOUR GOOGLE DRIVE / ONEDRIVE / GITHUB / GITLAB LINK HERE]
-  (Ensure this link remains valid for at least 1 year after submission.)
+Online Repository Link:
+  https://github.com/I-Love-yuigahama/FYP2_APP_FOR_SUBMIT
+  (This link will remain valid for at least 1 year after submission.)
 
 ===============================================================================
  FEATURES
@@ -21,21 +21,25 @@ Online Repository / Drive Link:
 
 - User Authentication & Authorization
     Secure login, sign-up, and password recovery using OTP via email
-    (Gmail SMTP).
+    (Gmail SMTP). Passwords are encrypted. JWT tokens are used for
+    session management.
 
 - Real-Time Multiplayer Quizzes
-    Join rooms via codes, wait in lobbies, answer questions in real-time,
-    and view live leaderboards using WebSockets (STOMP over SockJS).
+    Join rooms via room codes, wait in lobbies, answer questions in
+    real-time, and view live leaderboards using WebSockets
+    (STOMP over SockJS).
 
 - AI-Generated Content
-    Integrated with Google Gemini API, Hugging Face Tokenizer, and ONNX
-    Runtime for dynamic quiz generation and AI-powered grading.
+    Integrated with Google Gemini API for dynamic quiz question
+    generation. Uses Hugging Face Tokenizer and ONNX Runtime for
+    local AI-powered grading and inference.
 
 - Admin Dashboard
-    Manage users and questions efficiently.
+    Manage users and quiz questions efficiently through a dedicated
+    admin interface.
 
 - Profile Management
-    Users can manage their profiles and view past scores.
+    Users can manage their profiles and view past quiz scores.
 
 - Rate Limiting
     API rate limiting using Bucket4j to prevent abuse.
@@ -49,9 +53,9 @@ Online Repository / Drive Link:
   Category                 Technology / Library            Version
   -----------------------  ------------------------------  ----------
   Framework                Spring Boot                     4.0.1
-  Language                 Java                            21+
+  Language                 Java (JDK)                      21+
   Build Tool               Apache Maven (wrapper included) -
-  Database                 MySQL + Spring Data JPA         8.0
+  Database                 MySQL + Spring Data JPA         8.0+
   Security                 Spring Security + JWT (jjwt)    0.13.0
   Real-Time                Spring WebSockets (STOMP)       -
   AI/ML - DJL API          Deep Java Library               0.27.0
@@ -63,8 +67,8 @@ Online Repository / Drive Link:
   Rate Limiting            Bucket4j (JDK17+ Core)          8.14.0
   Code Generation          Lombok                          (managed)
   Env Configuration        spring-dotenv                   4.0.0
-  Email                    Spring Boot Starter Mail         -
-  Validation               Spring Boot Starter Validation   -
+  Email                    Spring Boot Starter Mail        -
+  Validation               Spring Boot Starter Validation  -
   Database Connector       MySQL Connector/J               (managed)
 
 --- Frontend (/fyp2-frontend) ---
@@ -90,7 +94,7 @@ Ensure the following tools are installed on your machine before proceeding:
   Java JDK          21 or higher         Required to compile and run the backend.
   Node.js           18.x or higher       Required to run the React frontend.
   npm               9.x or higher        Bundled with Node.js.
-  MySQL Server      8.0                  Required for the application database.
+  MySQL Server      8.0 or higher        Required for the application database.
   Git               Any recent version   Optional. For cloning from Git.
   IDE (Backend)     IntelliJ IDEA        Recommended for Java/Spring Boot.
   IDE (Frontend)    VS Code              Recommended for React development.
@@ -132,7 +136,7 @@ project-root/
 |   |       +-- resources/
 |   |           +-- application.properties  # Spring Boot configuration
 |   |           +-- models/                 # AI model files (ONNX + tokenizer)
-|   +-- .env                       # Environment variables
+|   +-- .env                       # Environment variables (see below)
 |   +-- pom.xml                    # Maven dependencies
 |   +-- mvnw / mvnw.cmd            # Maven Wrapper
 |   +-- Dockerfile                 # Docker build configuration
@@ -221,6 +225,13 @@ project-root/
        # CORS Allowed Origins
        CORS_ALLOWED_ORIGINS=http://localhost:3000
 
+   HOW TO GENERATE A JWT SECRET KEY:
+       Open a PowerShell terminal and run:
+           [Convert]::ToBase64String(
+             (1..64 | ForEach-Object { Get-Random -Minimum 0 -Maximum 256 }) -as [byte[]]
+           )
+       Copy the output string and paste it as JWT_SECRET.
+
    HOW TO OBTAIN A GMAIL APP PASSWORD:
        1. Go to your Google Account -> Security -> 2-Step Verification
           (must be enabled)
@@ -242,7 +253,8 @@ project-root/
    The backend will start on http://localhost:8080.
 
    NOTE: On first run, Maven will automatically download all required
-   dependencies defined in pom.xml. This may take a few minutes.
+   dependencies defined in pom.xml. This may take a few minutes depending
+   on your internet speed.
 
 ---------------------------------------------------------------------------
  STEP 3: FRONTEND SETUP (React)
@@ -261,6 +273,9 @@ project-root/
 
        npm install
 
+   NOTE: This may take a few minutes on first run as all Node packages
+   are downloaded.
+
 4. Start the React development server:
 
        npm start
@@ -274,8 +289,8 @@ project-root/
  DATASET INFORMATION
 ===============================================================================
 
-The project uses a self-collected Biology quiz dataset. All dataset files
-are included within the source code archive:
+This project uses a self-collected Biology quiz dataset. All dataset files
+are included within the source code archive (no separate download required):
 
   File / Folder                                  Description
   ---------------------------------------------  --------------------------------
@@ -284,16 +299,16 @@ are included within the source code archive:
   source_dataset/Q_Img/                          49 question images (PNG format)
 
 Additionally, the backend includes pre-trained AI model files for local
-inference:
+inference (also included in the source code archive):
 
   File                                           Description          Size
-  ---------------------------------------------  -------------------  ------
-  FYP2/src/main/resources/models/model.onnx      ONNX model (AI)      ~86 MB
-  FYP2/src/main/resources/models/tokenizer.json  HF tokenizer config  ~456 KB
+  ---------------------------------------------  -------------------  ---------
+  FYP2/src/main/resources/models/model.onnx      ONNX model (AI)      ~86.2 MB
+  FYP2/src/main/resources/models/tokenizer.json  HF tokenizer config  ~455 KB
   FYP2/src/main/resources/models/tokenizer_config.json  Tokenizer settings  ~350 B
 
-No separate download is required. All dataset and model files are included
-in the source code archive.
+No external dataset download is required. All dataset and model files
+are included in the source code archive.
 
 ===============================================================================
  ENVIRONMENT VARIABLES REFERENCE
@@ -303,14 +318,14 @@ in the source code archive.
 
   Variable               Required   Description
   ---------------------  --------   -----------------------------------------
-  DB_URL                 Yes        JDBC URL for MySQL
+  DB_URL                 Yes        JDBC URL for MySQL database
   DB_USERNAME            Yes        MySQL username (e.g., root)
   DB_PASSWORD            Yes        MySQL password
   JWT_SECRET             Yes        Base64-encoded key for JWT token signing
   GeminiAPIKey           Yes        Google Gemini API key for AI features
   Sender_Mail            Yes        Gmail address for sending OTP emails
   Mail_PASSWORD          Yes        Gmail App Password (16-character)
-  CORS_ALLOWED_ORIGINS   Yes        Allowed frontend origins
+  CORS_ALLOWED_ORIGINS   Yes        Allowed frontend origins (comma-separated)
 
 --- Frontend (fyp2-frontend/.env) ---
 
@@ -337,10 +352,11 @@ PROBLEM: mvnw permission denied (Mac/Linux)
 
 PROBLEM: MySQL connection refused
   -> Ensure MySQL server is running and the credentials in .env are correct.
+  -> Verify the database "fyp2" has been created.
 
 PROBLEM: Port 8080 already in use
-  -> Stop the other process using port 8080 or change the port in
-     application.properties.
+  -> Stop the other process using port 8080, or change the port by adding
+     server.port=<NEW_PORT> in application.properties.
 
 PROBLEM: Port 3000 already in use
   -> Stop the other process or let React choose an alternative port
@@ -352,18 +368,22 @@ PROBLEM: npm install fails
 
 PROBLEM: Gemini API errors
   -> Verify that GeminiAPIKey in .env is valid and has quota remaining.
+  -> Check https://aistudio.google.com/apikey for API key status.
 
 PROBLEM: Email OTP not sending
   -> Ensure Gmail 2-Step Verification is enabled and Mail_PASSWORD is
-     a valid App Password, not your login password.
+     a valid App Password (not your regular Gmail login password).
 
 PROBLEM: CORS errors in browser
   -> Ensure CORS_ALLOWED_ORIGINS in backend .env matches the frontend
-     URL exactly.
+     URL exactly (e.g., http://localhost:3000).
 
 PROBLEM: ONNX model loading fails
   -> Ensure src/main/resources/models/model.onnx exists and is not
-     corrupted (~86 MB).
+     corrupted (~86 MB). Re-download the source code archive if needed.
+
+PROBLEM: Maven build fails with "Unsupported class file major version"
+  -> Ensure you are using Java JDK 21 or higher. Check with: java -version
 
 ===============================================================================
  LICENSE
