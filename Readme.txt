@@ -11,8 +11,12 @@ and ONNX models, secure JWT authentication, and an admin dashboard.
  SOURCE CODE
 ===============================================================================
 
-Online Repository Link:
+Online Repository Link (GitHub):
   https://github.com/I-Love-yuigahama/FYP2_APP_FOR_SUBMIT
+  (This link will remain valid for at least 1 year after submission.)
+
+Online Drive Backup Link (Google Drive):
+  https://drive.google.com/drive/folders/1T925x1sXDiAqrgsnXmzRRmpP3bW9P2Vg?usp=sharing
   (This link will remain valid for at least 1 year after submission.)
 
 ===============================================================================
@@ -159,9 +163,10 @@ project-root/
 +-- db/
 |   +-- FYP_DB.sql                 # Database dump (schema + seed data)
 |
-+-- source_dataset/                # Self-collected dataset
++-- source_dataset/                # Self-collected dataset (download from Kaggle,
+|                                   #   see DATASET INFORMATION section below)
 |   +-- FYP2_Biology_DATASET_csv.csv   # Biology quiz questions (CSV)
-|   +-- Q_Img/                         # Question images (49 PNG files)
+|   +-- Q10.png, Q11.png, ...          # Question images (PNG, flat in this folder)
 |
 +-- User_Manual.docx / .pdf        # User manual documentation
 +-- README.md                      # README (Markdown version)
@@ -289,17 +294,53 @@ project-root/
  DATASET INFORMATION
 ===============================================================================
 
-This project uses a self-collected Biology quiz dataset. All dataset files
-are included within the source code archive (no separate download required):
+This project uses a self-collected Biology quiz dataset (questions, answers,
+and question images), hosted on Kaggle:
+
+  Kaggle Dataset Link:
+    https://www.kaggle.com/datasets/lelouchqwq/fyp2-1211201074-science-subjective-scorer
+    (This link will remain valid for at least 1 year after submission.)
 
   File / Folder                                  Description
   ---------------------------------------------  --------------------------------
-  source_dataset/FYP2_Biology_DATASET_csv.csv    Biology quiz questions & answers
+  FYP2_Biology_DATASET_csv.csv                   Biology quiz questions & answers
                                                  in CSV format (55 questions)
-  source_dataset/Q_Img/                          49 question images (PNG format)
+  FYP_DB.sql                                      Database dump (schema + seed data)
+  Q10.png, Q11.png, Q1_Q2.png, Q13_14.png, ...    Question images (PNG format).
+                                                 Filenames sit directly in the
+                                                 dataset root (no subfolder).
+                                                 Some images cover more than one
+                                                 question (e.g. Q1_Q2.png covers
+                                                 questions 1 and 2, Q13_14.png
+                                                 covers questions 13 and 14) —
+                                                 match by the question index/
+                                                 indices in the filename, not a
+                                                 strict one-image-per-question
+                                                 assumption.
+
+HOW TO DOWNLOAD AND USE THE DATASET:
+  1. Go to the Kaggle Dataset Link above.
+  2. Click "Download" to get the dataset (requires a free Kaggle account,
+     or use the Kaggle API: kaggle datasets download -d
+     lelouchqwq/fyp2-1211201074-science-subjective-scorer).
+  3. Extract the downloaded archive. Place the CSV and the PNG image files
+     into source_dataset/ in the project root (create the folder if it does
+     not already exist), matching the structure shown in PROJECT STRUCTURE
+     above. The FYP_DB.sql included in the Kaggle dataset is a copy of the
+     same database dump found at db/FYP_DB.sql in the source code archive.
+
+NOTE ON IMAGES: Since a CSV file cannot store binary image data, the
+question images are kept as separate PNG files rather than embedded in the
+CSV. Each image filename corresponds to its question's index/ID in the CSV
+(e.g. Q10.png -> question index 10; Q1_Q2.png -> questions 1 and 2). When
+importing/restoring the database from FYP_DB.sql, the DB rows will only
+contain a reference/path to the image, not the image itself — the images
+must be uploaded/imported one by one, matching each image to its
+corresponding question index (or indices), so that the question-image
+links resolve correctly.
 
 Additionally, the backend includes pre-trained AI model files for local
-inference (also included in the source code archive):
+inference (included in the source code archive, not on Kaggle):
 
   File                                           Description          Size
   ---------------------------------------------  -------------------  ---------
@@ -307,8 +348,8 @@ inference (also included in the source code archive):
   FYP2/src/main/resources/models/tokenizer.json  HF tokenizer config  ~455 KB
   FYP2/src/main/resources/models/tokenizer_config.json  Tokenizer settings  ~350 B
 
-No external dataset download is required. All dataset and model files
-are included in the source code archive.
+The AI model files are already included in the source code archive; no
+separate download is required for them.
 
 ===============================================================================
  ENVIRONMENT VARIABLES REFERENCE
